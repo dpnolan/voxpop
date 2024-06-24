@@ -1,0 +1,288 @@
+Dataset comes from Prof Raymond Hickey's Sound Atlas of Irish English (SAIE)
+Recordings have lots of background noise, as they are recorded in public
+
+Extracted the WAV files from the SAIE CD handed over by Prof Hickey
+
+Code to load the WAV files 
+Duration was not being calculated - Added librosa code to calculate the full recording file duration
+
+Workarounds added to get the sampling rate calculations from the recording files 
+
+
+0_4 loaded Dublin full-text voice recordings, averaging about 90 seconds each, those files NOT labelled as being the wordlist '_W_' or the short text '_T_'
+
+0_5 added graphing of spectrograms for MFCC
+Added amplitude and MFCC^2 calculations also
+
+
+0_6 add code for dataframe definition and export
+
+Audio file formats were MP3 rather than WAV in some cases - added tests and conversion to the preprocessing script
+
+0_64 Extracted codes for towns, gender and age of speaker and added to the database
+
+0_65 ANT Antrim and BEL Belfast sound data files to the data set to add a second class for the classification exercise
+Added rational expression to deal with the urban/rural and size codes in the SAIE filenames and extract these to the dataframe
+
+0_66 DOW County Down data was added: Down, Antrim and Derry are the areas of the 'Ulster-Scots' accent identified by Professor Hickey
+
+0_67 Added DER Derry data, Added regex for Windows file formats on Core i5 machine
+Running preprocessing now on i5 with Anaconda virtual environment audio2
+
+0_68 Sample recordings every SAMPLE_LENGTH seconds. Add these samples to the dataframe exported along with statistics for the sample alone.
+
+0_69 DER Derry files, 0_69 Antrim and Belfast files
+
+0_69 Clean up and check code and data; add exports of samples, starting with a four second period set by a global variable, to individual WAV files
+
+
+Sat + Sun 15-16 June
+
+Mon 17 June
+
+Model dry-run using the accent_db data together with the model in PyTorch that reproduces the numbers in their paper
+
+
+Tue 18 June
+
+4 second samples, MFCC
+Full dataset for ANT, DER as class 1, DUB as class 2
+DER dataset includes of all of Derry City and County, ANT includes Belfast samples (BEL) and all of Antrim (ANT)
+Preprocessing with sheet version 0_69
+Model with the CNN from accent_db paper
+Jupyter notebook is irish_accents_class.ipynb running in virtual env audio2 on i5
+
+[INFO] Epoch: 1
+100%|██████████| 298/298 [00:45<00:00,  6.52it/s]
+100%|██████████| 128/128 [00:16<00:00,  7.68it/s]
+Train loss: 0.9010, Train accuracy:  0.6444
+Validation loss: 0.6674, Validation accuracy:  0.6923
+[INFO] Epoch: 2
+100%|██████████| 298/298 [00:13<00:00, 21.80it/s]
+100%|██████████| 128/128 [00:05<00:00, 25.23it/s]
+Train loss: 0.6740, Train accuracy:  0.6915
+Validation loss: 0.6208, Validation accuracy:  0.7096
+[INFO] Epoch: 3
+100%|██████████| 298/298 [00:14<00:00, 21.22it/s]
+100%|██████████| 128/128 [00:05<00:00, 24.93it/s]
+Train loss: 0.6372, Train accuracy:  0.7114
+Validation loss: 0.6307, Validation accuracy:  0.7200
+[INFO] Epoch: 4
+100%|██████████| 298/298 [00:14<00:00, 21.10it/s]
+100%|██████████| 128/128 [00:05<00:00, 24.90it/s]
+Train loss: 0.6289, Train accuracy:  0.7233
+Validation loss: 0.6011, Validation accuracy:  0.7525
+[INFO] Epoch: 5
+100%|██████████| 298/298 [00:14<00:00, 20.61it/s]
+100%|██████████| 128/128 [00:05<00:00, 24.21it/s]
+Train loss: 0.6133, Train accuracy:  0.7341
+Validation loss: 0.6047, Validation accuracy:  0.7389
+
+As above, but female only for ANT, DER, DUB
+
+Female only for ANT, DUB
+ Epoch: 1
+100%|██████████| 111/111 [00:06<00:00, 16.60it/s]
+100%|██████████| 48/48 [00:03<00:00, 13.59it/s]
+Train loss: 0.8229, Train accuracy:  0.7750
+Validation loss: 0.3838, Validation accuracy:  0.8563
+[INFO] Epoch: 2
+100%|██████████| 111/111 [00:05<00:00, 21.26it/s]
+100%|██████████| 48/48 [00:01<00:00, 30.09it/s]
+Train loss: 0.3646, Train accuracy:  0.8414
+Validation loss: 0.4687, Validation accuracy:  0.8465
+[INFO] Epoch: 3
+100%|██████████| 111/111 [00:04<00:00, 25.42it/s]
+100%|██████████| 48/48 [00:01<00:00, 30.57it/s]
+Train loss: 0.3275, Train accuracy:  0.8601
+Validation loss: 0.3724, Validation accuracy:  0.8690
+[INFO] Epoch: 4
+100%|██████████| 111/111 [00:04<00:00, 24.77it/s]
+100%|██████████| 48/48 [00:01<00:00, 29.77it/s]
+Train loss: 0.3117, Train accuracy:  0.8703
+Validation loss: 0.3388, Validation accuracy:  0.8465
+[INFO] Epoch: 5
+100%|██████████| 111/111 [00:04<00:00, 25.43it/s]
+100%|██████████| 48/48 [00:01<00:00, 31.04it/s]
+Train loss: 0.3029, Train accuracy:  0.8733
+Validation loss: 0.5510, Validation accuracy:  0.8000
+
+
+1 second samples, MFCC
+
+DUB_1s v ANT_1s
+
+[INFO] Epoch: 1
+100%|██████████| 451/451 [00:48<00:00,  9.30it/s]
+100%|██████████| 193/193 [00:18<00:00, 10.48it/s]
+Train loss: 0.5319, Train accuracy:  0.8023
+Validation loss: 0.8573, Validation accuracy:  0.7840
+[INFO] Epoch: 2
+100%|██████████| 451/451 [00:16<00:00, 26.61it/s]
+100%|██████████| 193/193 [00:06<00:00, 29.94it/s]
+Train loss: 0.3510, Train accuracy:  0.8452
+Validation loss: 0.3241, Validation accuracy:  0.8697
+[INFO] Epoch: 3
+100%|██████████| 451/451 [00:17<00:00, 25.75it/s]
+100%|██████████| 193/193 [00:06<00:00, 30.37it/s]
+Train loss: 0.3351, Train accuracy:  0.8552
+Validation loss: 0.4297, Validation accuracy:  0.8248
+[INFO] Epoch: 4
+100%|██████████| 451/451 [00:17<00:00, 25.84it/s]
+100%|██████████| 193/193 [00:06<00:00, 30.09it/s]
+Train loss: 0.3230, Train accuracy:  0.8581
+Validation loss: 0.2849, Validation accuracy:  0.8728
+[INFO] Epoch: 5
+100%|██████████| 451/451 [00:18<00:00, 24.77it/s]
+100%|██████████| 193/193 [00:06<00:00, 30.84it/s]
+Train loss: 0.3088, Train accuracy:  0.8689
+Validation loss: 0.3435, Validation accuracy:  0.8334
+[INFO] Epoch: 6
+100%|██████████| 451/451 [00:17<00:00, 25.92it/s]
+100%|██████████| 193/193 [00:06<00:00, 28.74it/s]
+Train loss: 0.3059, Train accuracy:  0.8701
+Validation loss: 0.6006, Validation accuracy:  0.7820
+[INFO] Epoch: 7
+100%|██████████| 451/451 [00:17<00:00, 25.84it/s]
+100%|██████████| 193/193 [00:06<00:00, 30.88it/s]
+Train loss: 0.2939, Train accuracy:  0.8784
+Validation loss: 0.2451, Validation accuracy:  0.8974
+[INFO] Epoch: 8
+100%|██████████| 451/451 [00:17<00:00, 25.59it/s]
+100%|██████████| 193/193 [00:06<00:00, 29.99it/s]
+Train loss: 0.2934, Train accuracy:  0.8774
+Validation loss: 0.2761, Validation accuracy:  0.8756
+[INFO] Epoch: 9
+100%|██████████| 451/451 [00:17<00:00, 25.95it/s]
+100%|██████████| 193/193 [00:06<00:00, 30.80it/s]
+Train loss: 0.2860, Train accuracy:  0.8793
+Validation loss: 0.2958, Validation accuracy:  0.8656
+[INFO] Epoch: 10
+100%|██████████| 451/451 [00:17<00:00, 25.55it/s]
+100%|██████████| 193/193 [00:06<00:00, 30.26it/s]
+Train loss: 0.2718, Train accuracy:  0.8868
+Validation loss: 0.2414, Validation accuracy:  0.9046
+
+Fri 21 June
+Checked and verified the classification metrics logic
+Added recording number as a new field to the DF output of the MF
+
+Training on the male voice samples only led to lower accuracy scores
+
+Sat 22 June
+
+[INFO] Epoch: 1
+100%|██████████| 558/558 [00:24<00:00, 22.77it/s]
+100%|██████████| 239/239 [00:09<00:00, 26.05it/s]
+Train loss: 0.4604, Train accuracy:  0.7694
+Validation loss: 1.0883, Validation accuracy:  0.6300
+[INFO] Epoch: 2
+100%|██████████| 558/558 [00:24<00:00, 22.77it/s]
+100%|██████████| 239/239 [00:09<00:00, 26.04it/s]
+Train loss: 0.3961, Train accuracy:  0.8160
+Validation loss: 0.4083, Validation accuracy:  0.8217
+[INFO] Epoch: 3
+100%|██████████| 558/558 [00:25<00:00, 22.21it/s]
+100%|██████████| 239/239 [00:09<00:00, 25.61it/s]
+Train loss: 0.3893, Train accuracy:  0.8203
+Validation loss: 0.5795, Validation accuracy:  0.6900
+[INFO] Epoch: 4
+100%|██████████| 558/558 [00:25<00:00, 21.77it/s]
+100%|██████████| 239/239 [00:09<00:00, 25.42it/s]
+Train loss: 0.3773, Train accuracy:  0.8283
+Validation loss: 0.3862, Validation accuracy:  0.7969
+[INFO] Epoch: 5
+100%|██████████| 558/558 [00:25<00:00, 21.91it/s]
+100%|██████████| 239/239 [00:09<00:00, 25.22it/s]
+Train loss: 0.3683, Train accuracy:  0.8311
+Validation loss: 0.3900, Validation accuracy:  0.7958
+[INFO] Epoch: 6
+100%|██████████| 558/558 [00:25<00:00, 22.04it/s]
+100%|██████████| 239/239 [00:09<00:00, 25.19it/s]
+Train loss: 0.3604, Train accuracy:  0.8379
+Validation loss: 0.5196, Validation accuracy:  0.7453
+[INFO] Epoch: 7
+100%|██████████| 558/558 [00:25<00:00, 22.21it/s]
+100%|██████████| 239/239 [00:09<00:00, 25.27it/s]
+Train loss: 0.3554, Train accuracy:  0.8412
+Validation loss: 0.6751, Validation accuracy:  0.6635
+[INFO] Epoch: 8
+100%|██████████| 558/558 [00:25<00:00, 22.16it/s]
+100%|██████████| 239/239 [00:09<00:00, 25.63it/s]
+Train loss: 0.3498, Train accuracy:  0.8406
+Validation loss: 0.3506, Validation accuracy:  0.8209
+[INFO] Epoch: 9
+100%|██████████| 558/558 [00:25<00:00, 22.14it/s]
+100%|██████████| 239/239 [00:09<00:00, 25.82it/s]
+Train loss: 0.3423, Train accuracy:  0.8474
+Validation loss: 0.3414, Validation accuracy:  0.8449
+[INFO] Epoch: 10
+100%|██████████| 558/558 [00:25<00:00, 22.17it/s]
+100%|██████████| 239/239 [00:09<00:00, 25.64it/s]
+Train loss: 0.3322, Train accuracy:  0.8516
+Validation loss: 0.6265, Validation accuracy:  0.7093
+
+Sun 23 June 
+
+Load the data and features from the preprocessing scripts instead of directly from the sound files as in the source paper
+
+Random division 
+Set up to put samples from the same speakers into one of the two of the learning or the validation test set.  
+This eliminates the problem of matching to the same recording, which will have the same speaker and likely the same noise in the background
+
+Added a recording number as a dataframe variable, along with the class name and number.  
+
+Added class balancing based on the DUB and ANTBEL classes proportions to the feature classification model
+
+Results were positive
+
+[INFO] Epoch: 1
+100%|██████████| 986/986 [01:11<00:00, 13.75it/s]
+100%|██████████| 455/455 [00:20<00:00, 22.31it/s]
+Train loss: 0.2077, Train accuracy:  0.8709
+Validation loss: 0.4516, Validation accuracy:  0.8154
+[INFO] Epoch: 2
+100%|██████████| 986/986 [00:48<00:00, 20.27it/s]
+100%|██████████| 455/455 [00:19<00:00, 22.91it/s]
+Train loss: 0.2088, Train accuracy:  0.8735
+Validation loss: 0.4099, Validation accuracy:  0.8281
+[INFO] Epoch: 3
+100%|██████████| 986/986 [00:48<00:00, 20.42it/s]
+100%|██████████| 455/455 [00:19<00:00, 23.31it/s]
+Train loss: 0.2082, Train accuracy:  0.8711
+Validation loss: 0.4348, Validation accuracy:  0.8124
+[INFO] Epoch: 4
+100%|██████████| 986/986 [00:47<00:00, 20.59it/s]
+100%|██████████| 455/455 [00:19<00:00, 23.11it/s]
+Train loss: 0.2041, Train accuracy:  0.8714
+Validation loss: 0.4443, Validation accuracy:  0.7948
+[INFO] Epoch: 5
+100%|██████████| 986/986 [00:46<00:00, 21.03it/s]
+100%|██████████| 455/455 [00:19<00:00, 22.90it/s]
+Train loss: 0.2026, Train accuracy:  0.8725
+Validation loss: 0.4933, Validation accuracy:  0.8201
+[INFO] Epoch: 6
+100%|██████████| 986/986 [00:49<00:00, 19.84it/s]
+100%|██████████| 455/455 [00:22<00:00, 20.35it/s]
+Train loss: 0.1992, Train accuracy:  0.8806
+Validation loss: 0.4112, Validation accuracy:  0.8274
+[INFO] Epoch: 7
+100%|██████████| 986/986 [00:53<00:00, 18.47it/s]
+100%|██████████| 455/455 [00:21<00:00, 21.55it/s]
+Train loss: 0.1980, Train accuracy:  0.8796
+Validation loss: 0.5061, Validation accuracy:  0.7793
+[INFO] Epoch: 8
+100%|██████████| 986/986 [00:50<00:00, 19.55it/s]
+100%|██████████| 455/455 [00:19<00:00, 22.90it/s]
+Train loss: 0.1962, Train accuracy:  0.8802
+Validation loss: 0.4307, Validation accuracy:  0.8167
+[INFO] Epoch: 9
+100%|██████████| 986/986 [00:48<00:00, 20.40it/s]
+100%|██████████| 455/455 [00:20<00:00, 22.58it/s]
+Train loss: 0.1945, Train accuracy:  0.8829
+Validation loss: 0.5786, Validation accuracy:  0.8009
+[INFO] Epoch: 10
+100%|██████████| 986/986 [00:49<00:00, 20.10it/s]
+100%|██████████| 455/455 [00:19<00:00, 22.97it/s]
+Train loss: 0.1930, Train accuracy:  0.8811
+Validation loss: 0.4841, Validation accuracy:  0.7841
