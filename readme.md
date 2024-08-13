@@ -33,7 +33,7 @@ Sample files are the WAV sound files coming from taking one second-long samples 
 
 Requirements files are renamed with the Jupyter kernel they were extracted from 
 
-## Pre DUB / ANTBEL $0\_73$
+## Pre DUB / ANTBEL $0 73$
 Jupyter notebook with Python 
 Preprocesing of the input files to produce the sample files and the DataFrame pickle files
 
