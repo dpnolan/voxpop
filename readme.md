@@ -4,6 +4,8 @@ This is the runbook for the project code
 
 Code and data is available also on GitHub at the public repository at \url{https://github.com/dpnolan/voxpop}
 
+Input and output data is here https://drive.google.com/drive/folders/1H7oVtb4p4dn21on6KVxUEnL4abff4e32?usp=sharing
+
 Directory structure
 
 \voxpop 
